@@ -107,7 +107,7 @@ def main():
     ad_manager.RegisterAdvertisement(advertisement.get_path(), {},
                                      reply_handler=lambda: print('Advertisement registered'),
                                      error_handler=lambda e: print('Failed to register ad:', e))
-
+    #Glib is used to allow the dbus and other processes to run asynchronously 
     mainloop = GLib.MainLoop()
     try:
         mainloop.run()
