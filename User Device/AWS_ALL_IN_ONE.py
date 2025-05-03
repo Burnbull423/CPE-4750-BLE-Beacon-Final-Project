@@ -9,7 +9,7 @@ certPath = "{Your Cert path here}"
 clientId = "{Your AWS Thing name here}" #clientID for this is "SenseHat_S25"
 topic_shadow_update = "$aws/things/SenseHat_S25/shadow/update"
 AWS_REGION = "us-east-2"
-DYNAMODB_TABLE = "Restaurant_Info" #See Restaruant_Info.csv in AWS DynamoDB folder
+DYNAMODB_TABLE = "Restaurant_Info" #See Restaruant_Info.csv in AWS DynamoDB folder, this is also referred to as the index table in the report
 
 # === BLE Beacon Config ===
 TARGET_MAC = "{MAC address of BLE beacon for testing}"
