@@ -119,7 +119,7 @@ restaurant_name = "Ohm_Cookin"
 if restaurant_name:
     print(f"\n📋 Fetching menu for: {restaurant_name}")
     menu_items = get_menu_for_restaurant(restaurant_name)
-    menu_items.sort(key=lambda x: int(x.get("Order", 9999)))
+    menu_items.sort(key=lambda x: int(x.get("Order", 9999))) #boto3 gets items from the DynamoDB table in a slightly random order, so its sorted by the "Order" column before printing.
     if menu_items:
         print("\n📜 Menu Items:")
         for item in menu_items:
