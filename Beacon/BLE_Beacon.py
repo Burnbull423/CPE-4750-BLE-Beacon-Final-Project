@@ -65,9 +65,9 @@ class Advertisement(dbus.service.Object):
             ADVERTISEMENT_IFACE: {
                 'Type': self.ad_type,
                 'ManufacturerData': dbus.Dictionary({ #Manufacturer ID is 0xFFFF for "other"
-                0xFFFF: dbus.Array([ #This array is the actual payload of the advertisement, with our receiving script assuming its in ASCII format.
+                0xFFFF: dbus.Array([ #This array is the payload in ASCII. This example payload says "TempRestaurant", but should be replaced with the desired restaurant ID
         0x54, 0x65, 0x6D, 0x70,   #T e m p
-        0x52, 0x65, 0x73, 0x74,  #r e s t
+        0x52, 0x65, 0x73, 0x74,  #R e s t
         0x61, 0x75, 0x72, 0x61, 0x6E, 0x74 #a u r a n t  
     ], signature='y')
             }, signature='qv'),
