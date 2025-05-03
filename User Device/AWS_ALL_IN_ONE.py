@@ -23,7 +23,7 @@ class ScanDelegate(DefaultDelegate):
 
 def decode_manufacturer_data(data_hex):
     try:
-        clean_hex = data_hex[4:]  # skip first 2 bytes (company ID)
+        clean_hex = data_hex[4:]  # skip first 2 bytes (BLE Beacon manufacturer ID)
         bytes_data = bytes.fromhex(clean_hex)
         return bytes_data.decode('ascii')
     except Exception as e:
