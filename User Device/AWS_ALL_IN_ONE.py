@@ -4,15 +4,15 @@ from bluepy.btle import Scanner, DefaultDelegate
 import boto3
 
 # === AWS Config ===
-host = "a2eusghmtz57ld-ats.iot.us-east-2.amazonaws.com"
-certPath = "/home/burnbull/Downloads/cert/"
-clientId = "SenseHat_S25"
+host = "{Your AWS host link here}"
+certPath = "{Your Cert path here}
+clientId = "{Your AWS Thing name here}" #clientID for this is "SenseHat_S25"
 topic_shadow_update = "$aws/things/SenseHat_S25/shadow/update"
 AWS_REGION = "us-east-2"
-DYNAMODB_TABLE = "Restaurant_Info"
+DYNAMODB_TABLE = "Restaurant_Info" #See Restaruant_Info.csv in AWS DynamoDB folder
 
 # === BLE Beacon Config ===
-TARGET_MAC = "1b:19:b4:21:b2:65"
+TARGET_MAC = "{MAC address of BLE beacon for testing}"
 
 class ScanDelegate(DefaultDelegate):
     def __init__(self):
