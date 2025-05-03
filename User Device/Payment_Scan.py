@@ -5,10 +5,10 @@ import json
 from bluepy.btle import Scanner, DefaultDelegate
 
 # Configuration
-host = "a2eusghmtz57ld-ats.iot.us-east-2.amazonaws.com"
-certPath = "/home/burnbull/Downloads/cert/"
-clientId = "SenseHat_S25"  # This can be used as the thing name
-TARGET_MAC = "1b:19:b4:21:b2:65"
+host = "{Your AWS host link here}"
+certPath = "{Your Cert path here}"
+clientId = "{Your AWS Thing name here}" #For this the clientId of SenseHat_S25 was used
+TARGET_MAC = "{MAC address of BLE Beacon for testing}"
 
 # Global variable to store shadow state
 shadow_state = {}
@@ -49,10 +49,10 @@ def shadow_get_callback(client, userdata, message):
     except Exception as e:
         print(f"Error parsing shadow response: {e}")
 
-# Subscribe to the shadow response topic (this is the response to the get request)
+# Subscribe to the shadow response topic (this is the response to the publish below)
 myAWSIoTMQTTClient.subscribe(f"$aws/things/{clientId}/shadow/get/accepted", 1, shadow_get_callback)
 
-# Publish the shadow get request
+# Publishing a blank payload to the shadow will reply with the data currently in the shadow
 myAWSIoTMQTTClient.publish(shadow_topic, "{}", 1)
 
 # Wait for the shadow response to be processed
