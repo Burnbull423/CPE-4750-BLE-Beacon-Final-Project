@@ -15,6 +15,7 @@ DBUS_OM_IFACE = 'org.freedesktop.DBus.ObjectManager'
 class Advertisement(dbus.service.Object):
     PATH_BASE = '/org/bluez/example/advertisement'
 
+    #Default initialization
     def __init__(self, bus, index):
         self.path = self.PATH_BASE + str(index)
         self.bus = bus
@@ -58,18 +59,19 @@ class Advertisement(dbus.service.Object):
     def Release(self):
         print('Advertisement released')
 
+    #This is the advertisement that will be registered.
     def get_properties(self):
         return {
             ADVERTISEMENT_IFACE: {
                 'Type': self.ad_type,
-                'ManufacturerData': dbus.Dictionary({
-                0xFFFF: dbus.Array([
-        0x54, 0x65, 0x6D, 0x70,  # Temp
-        0x52, 0x65, 0x73, 0x74,  # Rest
-        0x61, 0x75, 0x72, 0x61, 0x6E, 0x74  # aurant
+                'ManufacturerData': dbus.Dictionary({ #Manufacturer ID is 0xFFFF for "other"
+                0xFFFF: dbus.Array([ #This array is the actual payload of the advertisement, with our receiving script assuming its in ASCII format.
+        0x54, 0x65, 0x6D, 0x70,   #T e m p
+        0x52, 0x65, 0x73, 0x74,  #r e s t
+        0x61, 0x75, 0x72, 0x61, 0x6E, 0x74 #a u r a n t  
     ], signature='y')
             }, signature='qv'),
-                'LocalName': 'Restaurant',
+                'LocalName': 'Restaurant', #Name the BLE Beacon advertises
                 'IncludeTxPower': dbus.Boolean(False),
             }
         }
