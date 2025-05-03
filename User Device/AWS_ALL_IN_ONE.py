@@ -5,7 +5,7 @@ import boto3
 
 # === AWS Config ===
 host = "{Your AWS host link here}"
-certPath = "{Your Cert path here}
+certPath = "{Your Cert path here}"
 clientId = "{Your AWS Thing name here}" #clientID for this is "SenseHat_S25"
 topic_shadow_update = "$aws/things/SenseHat_S25/shadow/update"
 AWS_REGION = "us-east-2"
